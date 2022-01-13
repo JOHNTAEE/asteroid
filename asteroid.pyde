@@ -1,4 +1,8 @@
 import random
+from helpers import test_print, init_asteroids
+
+test_print('hun')
+
 # comment update more
 x = 0
 y = 0
@@ -12,12 +16,8 @@ spaceshipy = 600
 spaceshipxspeed = 0
 spaceshipyspeed = 0
 
-for i in range(15):
-    asteroidy.append(random.randint(-200, 1200))
-    asteroidx.append(random.randint(-200,1000))
-    xspeed.append(random.randint(-3, 3))
-    yspeed.append(random.randint(-3, 3))
-    
+asteroidx, asteroidy, xspeed, yspeed = init_asteroids()
+
 game_background = 1
 
 def setup():
