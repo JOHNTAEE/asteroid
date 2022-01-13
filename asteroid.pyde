@@ -29,7 +29,7 @@ def draw():
     global x,y,asteroidy,asteroidx,asteroid,xspeed,yspeed,spaceshipx,spaceshipy
     if game_background == 1:
         background(0)
-        if xspeed != 0 and yspeed != 0:
+        if len(xspeed) > 0 and len(yspeed) > 0:
             for i in range(15):
                 x+=xspeed[i]
                 y+=yspeed[i]
