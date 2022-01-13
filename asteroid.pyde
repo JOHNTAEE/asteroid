@@ -63,7 +63,7 @@ def draw():
         spaceship()
         textSize(30)
         text("Score: ", 45, 60)
-        if xspeed != 0 and yspeed != 0:
+        if len(xspeed) > 0 and len(yspeed) > 0:
             for i in range(5):
                 x+=xspeed[i]
                 y+=yspeed[i]
