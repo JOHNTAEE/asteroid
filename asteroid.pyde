@@ -37,15 +37,15 @@ def draw():
                 asteroidx[i] += xspeed[i]
                 asteroidy[i] += yspeed[i]
                 image(asteroid[i],asteroidx[i],asteroidy[i])
-            for x in range(15):
-                if asteroidx[x] >= 1200:
-                    asteroidx[x] = -400
-                if asteroidy[x] >= 1000:
-                    asteroidy[x] = -400
-                if asteroidx[x] <= -500:
-                    asteroidx[x] = 1000
-                if asteroidy[x] <= -500:
-                    asteroidy[x] = 800
+                
+                if asteroidx[i] >= 1200:
+                    asteroidx[i] = -400
+                if asteroidy[i] >= 1000:
+                    asteroidy[i] = -400
+                if asteroidx[i] <= -500:
+                    asteroidx[i] = 1000
+                if asteroidy[i] <= -500:
+                    asteroidy[i] = 800
 
         textSize(80)
         text("Asteroids",330,200)
@@ -71,15 +71,15 @@ def draw():
                 asteroidx[i] += xspeed[i]
                 asteroidy[i] += yspeed[i]
                 image(asteroid[i],asteroidx[i],asteroidy[i])
-            for x in range(5):
-                if asteroidx[x] >= 1200:
-                    asteroidx[x] = -400
-                if asteroidy[x] >= 1000:
-                    asteroidy[x] = -400
-                if asteroidx[x] <= -500:
-                    asteroidx[x] = 1000
-                if asteroidy[x] <= -500:
-                    asteroidy[x] = 800
+                
+                if asteroidx[i] >= 1200:
+                    asteroidx[i] = -400
+                if asteroidy[i] >= 1000:
+                    asteroidy[i] = -400
+                if asteroidx[i] <= -500:
+                    asteroidx[i] = 1000
+                if asteroidy[i] <= -500:
+                    asteroidy[i] = 800
                 
 def mousePressed():
     global game_background
