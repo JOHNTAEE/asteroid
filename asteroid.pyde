@@ -1,5 +1,5 @@
 import random
-# comment update
+# comment update more
 x = 0
 y = 0
 asteroid = []
