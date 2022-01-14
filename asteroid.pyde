@@ -108,7 +108,7 @@ def draw_spaceship():
     strokeWeight(2)
     stroke(255,140,0)
     noFill()
-    triangle(spaceship.pos_x+0, spaceship.pos_y-30, spaceship.pos_x-20, spaceship.pos_y+30, spaceship.pos_x+20, spaceship.pos_y+30)
+    triangle(*spaceship.get_draw_coord())
 
 
     
