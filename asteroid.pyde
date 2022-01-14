@@ -1,7 +1,8 @@
 import random
-from helpers import test_print, init_asteroids
+from helpers import init_asteroids
+from Spaceship import Spaceship
 
-test_print('hun')
+spaceship = Spaceship()
 
 # comment update more
 x = 0
@@ -11,14 +12,12 @@ asteroidy = []
 asteroidx = []
 xspeed = []
 yspeed = []
-spaceshipx = 400
-spaceshipy = 600
-spaceshipxspeed = 0
-spaceshipyspeed = 0
+
 
 asteroidx, asteroidy, xspeed, yspeed = init_asteroids()
 
 game_background = 1
+
 
 def setup():
     global asteroid 
@@ -61,7 +60,7 @@ def draw():
         
     elif game_background == 2:
         background(0)
-        spaceship()
+        draw_spaceship()
         textSize(30)
         text("Score: ", 45, 60)
         if len(xspeed) > 0 and len(yspeed) > 0:
@@ -88,27 +87,28 @@ def mousePressed():
             game_background = 2
                  
 def keyPressed():
-    global spaceshipx, spaceshipy, spaceshipxspeed, spaceshipyspeed
+    global spaceship
     if keyCode == UP:
         print 'up'
-        spaceshipy -= 10
-        spaceshipyspeed += 2
+        spaceship.pos_y -= 10
+        spaceship.speed_y += 2
     elif keyCode == DOWN:
-        spaceshipy += 10
-        spaceshipyspeed -= 2
+        spaceship.pos_y += 10
+        spaceship.speed_y -= 2
     elif keyCode == RIGHT:
-        pushMatrix()
-        translate(width/2,height/2)
-        rotate(radians(90))
-        triangle(spaceshipx, spaceshipy, 375, 680, 425, 680)
-        popMatrix()
+        pass
+        # pushMatrix()
+        # translate(width/2,height/2)
+        # rotate(radians(90))
+        # triangle(spaceshipx, spaceshipy, 375, 680, 425, 680)
+        # popMatrix()
     
-def spaceship():
-    global spaceshipx, spaceshipy
+def draw_spaceship():
+    global spaceship
     strokeWeight(2)
     stroke(255,140,0)
     noFill()
-    triangle(spaceshipx+0, spaceshipy-30, spaceshipx-20, spaceshipy+30, spaceshipx+20, spaceshipy+30)
+    triangle(spaceship.pos_x+0, spaceship.pos_y-30, spaceship.pos_x-20, spaceship.pos_y+30, spaceship.pos_x+20, spaceship.pos_y+30)
 
 
     
