@@ -8,12 +8,12 @@ class Spaceship():
         self.size_x = 20
         self.size_y = 30
         
-    def increase_speed(self, x, y):
-        self.speed_x += x
-        self.speed_y += y
+    def increase_speed(self, speed):
+        # self.speed_x += x
+        self.speed_y += speed
     
     def get_draw_coord(self):
-        self.pos_x += self.speed_x
+        # self.pos_x += self.speed_x
         self.pos_y += self.speed_y
         return self.pos_x+0, self.pos_y-self.size_y, self.pos_x-self.size_x, self.pos_y+self.size_y, self.pos_x+self.size_x, self.pos_y+self.size_y
         

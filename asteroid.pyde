@@ -89,11 +89,11 @@ def mousePressed():
 def keyPressed():
     global spaceship
     if keyCode == UP:
-        spaceship.increase_speed(0, -0.5)
+        spaceship.increase_speed(-0.5)
     elif keyCode == DOWN:
-        spaceship.increase_speed(0, 0.5)
+        spaceship.increase_speed(0.5)
     elif keyCode == RIGHT:
-        pass
+        spaceship.angle += 1
         # pushMatrix()
         # translate(width/2,height/2)
         # rotate(radians(90))
