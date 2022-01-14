@@ -6,7 +6,6 @@ class Rock():
         self.pos_y = random.randint(-200, 1200)
         self.speed_x = random.randint(-3, 3)
         self.speed_y = random.randint(-3, 3)
-        self.img = None
     
     def update_pos(self):
         self.pos_x += self.speed_x

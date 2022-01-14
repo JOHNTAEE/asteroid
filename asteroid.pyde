@@ -5,69 +5,50 @@ from Rock import Rock
 
 spaceship = Spaceship()
 
-# comment update more
-x = 0
-y = 0
-asteroid = []
-asteroidy = []
-asteroidx = []
-xspeed = []
-yspeed = []
-
+# Rock objects
+rock_img = None
 rocks = []
-
 for i in range(15):
     rock = Rock()
-    # rock.img = loadImage("Asteroid.png")
     rocks.append(rock)
-
-
-asteroidx, asteroidy, xspeed, yspeed = init_asteroids()
 
 game_background = 1
 
 
 def setup():
-    global asteroid 
+    global rocks, rock_img
     size(1000, 800)
-    for i in range(15):
-        asteroid.append(loadImage("Asteroid.png"))
-        
-    for rock in rocks:
-        rock.img = loadImage("Asteroid.png")
+    rock_img = loadImage("Asteroid.png")
    
 def draw():
-    global x,y,asteroidy,asteroidx,asteroid,xspeed,yspeed,spaceshipx,spaceshipy
-    global rocks
+    global rocks, rock_img
     if game_background == 1:
         background(0)
-        if len(rocks) > 0:
-            for i in range(15):
-                rocks[i].update_pos()
-                image(rocks[i].img, rocks[i].pos_x, rocks[i].pos_x)
+        for rock in rocks:
+            rock.update_pos()
+            image(rock_img, rock.pos_x, rock.pos_y)
 
 
-#         textSize(80)
-#         text("Asteroids",330,200)
-#         fill(255,255,255)
-#         textSize(20)
-#         text("ARCADE GAME", 430,250)
-#         fill(255,255,255)
-#         rect(430,500,150,50)
-#         fill(0)
-#         textSize(20)
-#         text("Play Game",455,530)
-#         fill(255,255,255)
+        textSize(80)
+        text("Asteroids",330,200)
+        fill(255,255,255)
+        textSize(20)
+        text("ARCADE GAME", 430,250)
+        fill(255,255,255)
+        rect(430,500,150,50)
+        fill(0)
+        textSize(20)
+        text("Play Game",455,530)
+        fill(255,255,255)
         
-#     elif game_background == 2:
-#         background(0)
-#         draw_spaceship()
-#         textSize(30)
-#         text("Score: ", 45, 60)
-#         if len(rocks) > 0:
-#             for i in range(5):
-#                 rocks[i].update_pos()
-#                 image(rocks[i].img, rocks[i].pos_x, rocks[i].pos_x)
+    elif game_background == 2:
+        background(0)
+        draw_spaceship()
+        textSize(30)
+        text("Score: ", 45, 60)
+        for rock in rocks:
+            rock.update_pos()
+            image(rock_img, rock.pos_x, rock.pos_y)
                 
 def mousePressed():
     global game_background
