@@ -6,6 +6,10 @@ class Rock():
         self.pos_y = random.randint(-200, 1200)
         self.speed_x = random.randint(-3, 3)
         self.speed_y = random.randint(-3, 3)
+        
+        while self.speed_x == 0 and self.speed_y == 0:
+            self.speed_x = random.randint(-3, 3)
+            self.speed_y = random.randint(-3, 3)
     
     def update_pos(self):
         self.pos_x += self.speed_x
