@@ -5,7 +5,7 @@ class Spaceship():
         self.size_x = 20
         self.size_y = 30
         self.speed = 0
-        self.angle = 30
+        self.angle = 0
     
     def rotate_point(self, p, degree):
         angle = radians(degree)
@@ -21,10 +21,14 @@ class Spaceship():
         self.speed += speed
     
     def get_draw_coord(self):
-        # self.pos_y += self.speed
         p1 = self.rotate_point((0, -self.size_y), self.angle)
         p2 = self.rotate_point((-self.size_x, self.size_y), self.angle)
         p3 = self.rotate_point((self.size_x, self.size_y), self.angle)
+        
+        # Apply speed to the position
+        speed = self.rotate_point((0, self.speed), self.angle)
+        self.pos_x += speed[0]
+        self.pos_y += speed[1]
         
         next_pos1 = (self.pos_x + p1[0], self.pos_y + p1[1])
         next_pos2 = (self.pos_x + p2[0], self.pos_y + p2[1])
