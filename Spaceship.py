@@ -6,6 +6,10 @@ class Spaceship():
         self.size_y = 30
         self.speed = 0
         self.angle = 0
+        self.points = []
+        
+        self.col_areas_info = ((0, 0, 15), (0, 20, 25))
+        self.col_areas = [[self.pos_x, self.pos_y], [self.pos_x, self.pos_y+20]]
     
     def rotate_point(self, p, degree):
         angle = radians(degree)
@@ -34,6 +38,15 @@ class Spaceship():
         next_pos2 = (self.pos_x + p2[0], self.pos_y + p2[1])
         next_pos3 = (self.pos_x + p3[0], self.pos_y + p3[1])
         
-        return next_pos1[0], next_pos1[1], next_pos2[0], next_pos2[1], next_pos3[0], next_pos3[1]
+        self.points = next_pos1[0], next_pos1[1], next_pos2[0], next_pos2[1], next_pos3[0], next_pos3[1]
+        
+        # Col area
+        for i in range(len(self.col_areas_info)):
+            pos_tmp = self.rotate_point((self.col_areas_info[i][0], self.col_areas_info[i][1]), self.angle)
+            self.col_areas[i][0] = pos_tmp[0] + self.pos_x
+            self.col_areas[i][1] = pos_tmp[1] + self.pos_y
+            
+        
+
         
         

@@ -54,9 +54,13 @@ def draw():
         draw_spaceship()
         textSize(30)
         text("Score: ", 45, 60)
+        # circle(500, 500, 100)
         for rock in rocks:
             rock.update_pos()
             image(rock_img, rock.pos_x, rock.pos_y)
+            # rock.is_collide_with((500, 500), 100)
+            rock.is_collide_with((spaceship.pos_x, spaceship.pos_y), 15)
+            rock.is_collide_with((spaceship.pos_x, spaceship.pos_y+20), 25)
                 
 def mousePressed():
     global game_background
@@ -88,7 +92,19 @@ def draw_spaceship():
     strokeWeight(2)
     stroke(255,140,0)
     noFill()
-    triangle(*spaceship.get_draw_coord())
+    spaceship.get_draw_coord()
+    triangle(*spaceship.points)
+    
+    for i in range(2):
+        circle(spaceship.col_areas[i][0], spaceship.col_areas[i][1], spaceship.col_areas_info[i][2])
+            
+    # circle(spaceship.pos_x, spaceship.pos_y, 15)
+    # circle(spaceship.pos_x, spaceship.pos_y+20, 25)
+    
+    # image(rock_img, 100, 100)
+    # r_x = 295
+    # r_y = 225
+    # circle(100+r_x, 100+r_y, 70)
 
 
     
