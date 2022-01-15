@@ -3,16 +3,22 @@ from helpers import init_asteroids
 from Spaceship import Spaceship
 from Rock import Rock
 
+NUM_ROCKS_MAIN = 15
+MODE_GAME_START = 1
+MODE_GAME_ON = 2
+
+game_background = MODE_GAME_START
+
+
 spaceship = Spaceship()
 
 # Rock objects
 rock_img = None
 rocks = []
-for i in range(15):
+for i in range(NUM_ROCKS_MAIN):
     rock = Rock()
     rocks.append(rock)
 
-game_background = 1
 
 
 def setup():
@@ -22,7 +28,7 @@ def setup():
    
 def draw():
     global rocks, rock_img
-    if game_background == 1:
+    if game_background == MODE_GAME_START:
         background(0)
         for rock in rocks:
             rock.update_pos()
@@ -41,7 +47,7 @@ def draw():
         text("Play Game",455,530)
         fill(255,255,255)
         
-    elif game_background == 2:
+    elif game_background == MODE_GAME_ON:
         background(0)
         draw_spaceship()
         textSize(30)
