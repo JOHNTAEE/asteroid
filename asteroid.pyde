@@ -7,6 +7,9 @@ NUM_ROCKS_MAIN = 15
 MODE_GAME_START = 1
 MODE_GAME_ON = 2
 
+ANGLE_DELTA = 5
+SPEED_DELTA = 0.5
+
 game_background = MODE_GAME_START
 
 
@@ -30,6 +33,7 @@ def draw():
     global rocks, rock_img
     if game_background == MODE_GAME_START:
         background(0)
+        draw_spaceship()
         for rock in rocks:
             rock.update_pos()
             image(rock_img, rock.pos_x, rock.pos_y)
@@ -65,11 +69,13 @@ def mousePressed():
 def keyPressed():
     global spaceship
     if keyCode == UP:
-        spaceship.increase_speed(-0.5)
+        spaceship.increase_speed(-SPEED_DELTA)
     elif keyCode == DOWN:
-        spaceship.increase_speed(0.5)
+        spaceship.increase_speed(SPEED_DELTA)
+    elif keyCode == LEFT:
+        spaceship.angle -= ANGLE_DELTA
     elif keyCode == RIGHT:
-        spaceship.angle += 1
+        spaceship.angle += ANGLE_DELTA
         # pushMatrix()
         # translate(width/2,height/2)
         # rotate(radians(90))
