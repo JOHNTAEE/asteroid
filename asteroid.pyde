@@ -1,4 +1,3 @@
-import random
 from helpers import init_asteroids
 from Spaceship import Spaceship
 from Rock import Rock
@@ -9,10 +8,11 @@ MODE_GAME_ON = 2
 
 ANGLE_DELTA = 5
 SPEED_DELTA = 0.5
+SPEED_LIMIT = 3
 
 game_background = MODE_GAME_START
 
-
+# Spaceship object
 spaceship = Spaceship()
 
 # Rock objects
@@ -21,7 +21,6 @@ rocks = []
 for i in range(NUM_ROCKS_MAIN):
     rock = Rock()
     rocks.append(rock)
-
 
 
 def setup():
@@ -33,7 +32,6 @@ def draw():
     global rocks, rock_img
     if game_background == MODE_GAME_START:
         background(0)
-        draw_spaceship()
         for rock in rocks:
             rock.update_pos()
             image(rock_img, rock.pos_x, rock.pos_y)
@@ -69,9 +67,12 @@ def mousePressed():
 def keyPressed():
     global spaceship
     if keyCode == UP:
-        spaceship.increase_speed(-SPEED_DELTA)
+        if spaceship.speed > -SPEED_LIMIT:
+            spaceship.increase_speed(-SPEED_DELTA)
     elif keyCode == DOWN:
         spaceship.increase_speed(SPEED_DELTA)
+        if spaceship.speed > SPEED_LIMIT/2:
+            spaceship.speed = SPEED_LIMIT/2
     elif keyCode == LEFT:
         spaceship.angle -= ANGLE_DELTA
     elif keyCode == RIGHT:
