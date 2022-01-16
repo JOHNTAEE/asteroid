@@ -1,6 +1,7 @@
 from helpers import *
 from Spaceship import Spaceship
 from Rock import Rock
+from Bullet import Bullet
 
 NUM_ROCKS_MAIN = 15
 MODE_GAME_START = 1
@@ -21,6 +22,9 @@ rocks = []
 for i in range(NUM_ROCKS_MAIN):
     rock = Rock()
     rocks.append(rock)
+
+# Bullets objects
+bullets = []
 
 
 def setup():
@@ -51,9 +55,12 @@ def draw():
         
     elif game_background == MODE_GAME_ON:
         background(0)
-        draw_spaceship()
         textSize(30)
         text("Score: ", 45, 60)
+        draw_spaceship()
+        
+        draw_bullets()
+        
         # circle(500, 500, 100)
         for rock in rocks:
             rock.update_pos()
@@ -75,7 +82,7 @@ def mousePressed():
             game_background = 2
                  
 def keyPressed():
-    global spaceship
+    global spaceship, bullets
     if keyCode == UP:
         if spaceship.speed > -SPEED_LIMIT:
             spaceship.increase_speed(-SPEED_DELTA)
@@ -87,12 +94,16 @@ def keyPressed():
         spaceship.angle -= ANGLE_DELTA
     elif keyCode == RIGHT:
         spaceship.angle += ANGLE_DELTA
-        # pushMatrix()
-        # translate(width/2,height/2)
-        # rotate(radians(90))
-        # triangle(spaceshipx, spaceshipy, 375, 680, 425, 680)
-        # popMatrix()
-    
+    elif keyCode == 32:  # SPACE BUTTON
+        bullets.append(Bullet(spaceship.points[0], spaceship.points[1], spaceship.angle, -30))
+
+
+def draw_bullets():
+    global bullets
+    for bullet in bullets:
+        bullet.update_move()
+        circle(bullet.x, bullet.y, bullet.size)
+
 def draw_spaceship():
     global spaceship
     strokeWeight(2)
