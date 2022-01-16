@@ -1,4 +1,4 @@
-from helpers import init_asteroids
+from helpers import *
 from Spaceship import Spaceship
 from Rock import Rock
 
@@ -59,8 +59,9 @@ def draw():
             rock.update_pos()
             image(rock_img, rock.pos_x, rock.pos_y)
             # rock.is_collide_with((500, 500), 100)
-            rock.is_collide_with((spaceship.pos_x, spaceship.pos_y), 15)
-            rock.is_collide_with((spaceship.pos_x, spaceship.pos_y+20), 25)
+            if is_collided(spaceship, rock):
+                print("rock collision")
+            
                 
 def mousePressed():
     global game_background
@@ -95,9 +96,10 @@ def draw_spaceship():
     spaceship.get_draw_coord()
     triangle(*spaceship.points)
     
-    for i in range(2):
-        circle(spaceship.col_areas[i][0], spaceship.col_areas[i][1], spaceship.col_areas_info[i][2])
-            
+    col_circles = spaceship.get_collision_circles()
+    for col_circle in col_circles:
+        circle(col_circle.x, col_circle.y, col_circle.diameter)
+
     # circle(spaceship.pos_x, spaceship.pos_y, 15)
     # circle(spaceship.pos_x, spaceship.pos_y+20, 25)
     

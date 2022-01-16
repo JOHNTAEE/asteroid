@@ -1,3 +1,5 @@
+from Circle import Circle
+
 class Spaceship():
     def __init__(self):
         self.pos_x = 400
@@ -23,7 +25,14 @@ class Spaceship():
 
     def increase_speed(self, speed):
         self.speed += speed
-    
+        
+    def get_collision_circles(self):
+        circles = []
+        for col_circle in self.col_areas_info:
+            rotated_col_circle = self.rotate_point((col_circle[0], col_circle[1]), self.angle)
+            circles.append(Circle(self.pos_x + rotated_col_circle[0], self.pos_y + rotated_col_circle[1], col_circle[2]))
+        return circles
+
     def get_draw_coord(self):
         p1 = self.rotate_point((0, -self.size_y), self.angle)
         p2 = self.rotate_point((-self.size_x, self.size_y), self.angle)

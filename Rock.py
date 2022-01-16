@@ -1,4 +1,5 @@
 import random
+from Circle import Circle
 
 class Rock():
     def __init__(self):
@@ -24,15 +25,10 @@ class Rock():
         if self.pos_y <= -500:
             self.pos_y = 800
     
-    def is_collide_with(self, p, rad):
-        r_x = 295
-        r_y = 225
-        r_rad = 70
-        distance = sqrt(pow((self.pos_x + r_x - p[0]), 2) + pow((self.pos_y + r_y - p[1]), 2))
-        if distance < (r_rad + rad)/2:
-            print('crahsed ------')
-            return True
-        return False
-        
+    def get_collision_circles(self):
+        offset_x = 295
+        offset_y = 225
+        diameter = 70
+        return [Circle(self.pos_x + offset_x, self.pos_y + offset_y, diameter)]
         
         
