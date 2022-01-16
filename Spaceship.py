@@ -9,6 +9,7 @@ class Spaceship():
         self.speed = 0
         self.angle = 0
         self.points = []
+        self.is_inside = True
         
         self.col_areas_info = ((0, 0, 15), (0, 20, 25))
     
@@ -41,6 +42,7 @@ class Spaceship():
         speed = self.rotate_point((0, self.speed), self.angle)
         self.pos_x += speed[0]
         self.pos_y += speed[1]
+        print(speed)
         
         next_pos1 = (self.pos_x + p1[0], self.pos_y + p1[1])
         next_pos2 = (self.pos_x + p2[0], self.pos_y + p2[1])
@@ -49,14 +51,16 @@ class Spaceship():
         self.points = next_pos1[0], next_pos1[1], next_pos2[0], next_pos2[1], next_pos3[0], next_pos3[1]
 
     def is_out_of_screen(self):
+        bound_x = 1000
+        bound_y = 800
         result = True
-        if self.points[0] > 0 and self.points[0] < 1000 and self.points[1] > 0 and self.points[1] < 800:
+        if self.points[0] > 0 and self.points[0] < bound_x and self.points[1] > 0 and self.points[1] < bound_y:
             result = False
 
-        if self.points[2] > 0 and self.points[2] < 1000 and self.points[3] > 0 and self.points[3] < 800:
+        if self.points[2] > 0 and self.points[2] < bound_x and self.points[3] > 0 and self.points[3] < bound_y:
             result = False
         
-        if self.points[4] > 0 and self.points[4] < 1000 and self.points[5] > 0 and self.points[5] < 800:
+        if self.points[4] > 0 and self.points[4] < bound_x and self.points[5] > 0 and self.points[5] < bound_y:
             result = False
 
         return result

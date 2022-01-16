@@ -107,7 +107,15 @@ def draw_spaceship():
         circle(col_circle.x, col_circle.y, col_circle.diameter)
 
     if spaceship.is_out_of_screen():
-        print("out of screen")
+        if spaceship.is_inside == True:
+            print("out of screen")
+            spaceship.pos_x = width - spaceship.pos_x
+            spaceship.pos_y = height - spaceship.pos_y
+            # spaceship.pos_x = 800 - spaceship.pos_x
+            # spaceship.pos_y = 500 - spaceship.pos_y
+            spaceship.is_inside = False
+    else:
+        spaceship.is_inside = True
     # circle(spaceship.pos_x, spaceship.pos_y, 15)
     # circle(spaceship.pos_x, spaceship.pos_y+20, 25)
     
