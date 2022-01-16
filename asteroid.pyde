@@ -57,10 +57,13 @@ def draw():
         # circle(500, 500, 100)
         for rock in rocks:
             rock.update_pos()
-            image(rock_img, rock.pos_x, rock.pos_y)
-            # rock.is_collide_with((500, 500), 100)
-            if is_collided(spaceship, rock):
-                print("rock collision")
+            if rock.is_active:
+                # rock.is_collide_with((500, 500), 100)
+                if is_collided(spaceship, rock):
+                    rock.is_active = False
+                    print("rock collision")
+                else:
+                    image(rock_img, rock.pos_x, rock.pos_y)
             
                 
 def mousePressed():

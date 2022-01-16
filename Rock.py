@@ -7,6 +7,7 @@ class Rock():
         self.pos_y = random.randint(-200, 1200)
         self.speed_x = random.randint(-3, 3)
         self.speed_y = random.randint(-3, 3)
+        self.is_active = True
         
         while self.speed_x == 0 and self.speed_y == 0:
             self.speed_x = random.randint(-3, 3)
@@ -30,5 +31,4 @@ class Rock():
         offset_y = 225
         diameter = 70
         return [Circle(self.pos_x + offset_x, self.pos_y + offset_y, diameter)]
-        
         
