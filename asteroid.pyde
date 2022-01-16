@@ -62,6 +62,8 @@ def draw():
                 if is_collided(spaceship, rock):
                     rock.is_active = False
                     print("rock collision")
+                    # TODO: update animation
+                    circle(spaceship.pos_x, spaceship.pos_y, 50)
                 else:
                     image(rock_img, rock.pos_x, rock.pos_y)
             
