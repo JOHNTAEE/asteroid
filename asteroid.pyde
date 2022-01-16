@@ -59,6 +59,7 @@ def draw():
         text("Score: ", 45, 60)
         draw_spaceship()
         
+        update_bullets()
         draw_bullets()
         
         # circle(500, 500, 100)
@@ -97,11 +98,27 @@ def keyPressed():
     elif keyCode == 32:  # SPACE BUTTON
         bullets.append(Bullet(spaceship.points[0], spaceship.points[1], spaceship.angle, -30))
 
+def update_bullets():
+    global bullets, rocks
+    
+    for bullet in bullets:
+        bullet.update_move()
+        # Check the collision with rocks
+        # TODO: increase score 
+        for rock in rocks:
+            if bullet.is_active == True and is_collided(bullet, rock):
+                bullet.is_active = False
+                rock.is_active = False
+
+    new_bullets = []
+    for bullet in bullets:
+        if bullet.is_active == True:
+            new_bullets.append(bullet)
+    bullets = new_bullets
 
 def draw_bullets():
     global bullets
     for bullet in bullets:
-        bullet.update_move()
         circle(bullet.x, bullet.y, bullet.size)
 
 def draw_spaceship():

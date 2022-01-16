@@ -1,4 +1,5 @@
 from helpers import rotate_point
+from Circle import Circle
 
 class Bullet():
     def __init__(self, x, y, angle, speed):
@@ -16,3 +17,12 @@ class Bullet():
         speed = rotate_point((0, self.speed), self.angle)
         self.x += speed[0]
         self.y += speed[1]
+        
+        if self.is_out_of_screen():
+            self.is_active = False
+    
+    def is_out_of_screen(self):
+        result = True
+        if self.x > 0 and self.x < width and self.y > 0 and self.y < height:
+            result = False
+        return result
