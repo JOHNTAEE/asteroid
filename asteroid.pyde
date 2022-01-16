@@ -101,10 +101,13 @@ def draw_spaceship():
     spaceship.get_draw_coord()
     triangle(*spaceship.points)
     
+    # Debuggin outputs
     col_circles = spaceship.get_collision_circles()
     for col_circle in col_circles:
         circle(col_circle.x, col_circle.y, col_circle.diameter)
 
+    if spaceship.is_out_of_screen():
+        print("out of screen")
     # circle(spaceship.pos_x, spaceship.pos_y, 15)
     # circle(spaceship.pos_x, spaceship.pos_y+20, 25)
     
