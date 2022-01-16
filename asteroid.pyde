@@ -69,8 +69,7 @@ def draw():
                 # rock.is_collide_with((500, 500), 100)
                 if is_collided(spaceship, rock):
                     rock.is_active = False
-                    print("rock collision")
-                    # TODO: update animation
+                    # TODO: update animation/sound
                     circle(spaceship.pos_x, spaceship.pos_y, 50)
                 else:
                     image(rock_img, rock.pos_x, rock.pos_y)
@@ -96,6 +95,7 @@ def keyPressed():
     elif keyCode == RIGHT:
         spaceship.angle += ANGLE_DELTA
     elif keyCode == 32:  # SPACE BUTTON
+        # TODO: update sound
         bullets.append(Bullet(spaceship.points[0], spaceship.points[1], spaceship.angle, -30))
 
 def update_bullets():
@@ -104,7 +104,7 @@ def update_bullets():
     for bullet in bullets:
         bullet.update_move()
         # Check the collision with rocks
-        # TODO: increase score 
+        # TODO: increase score / update sound
         for rock in rocks:
             if bullet.is_active == True and is_collided(bullet, rock):
                 bullet.is_active = False
