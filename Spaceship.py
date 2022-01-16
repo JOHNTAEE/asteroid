@@ -42,13 +42,22 @@ class Spaceship():
         speed = self.rotate_point((0, self.speed), self.angle)
         self.pos_x += speed[0]
         self.pos_y += speed[1]
-        print(speed)
         
         next_pos1 = (self.pos_x + p1[0], self.pos_y + p1[1])
         next_pos2 = (self.pos_x + p2[0], self.pos_y + p2[1])
         next_pos3 = (self.pos_x + p3[0], self.pos_y + p3[1])
         
         self.points = next_pos1[0], next_pos1[1], next_pos2[0], next_pos2[1], next_pos3[0], next_pos3[1]
+
+        if self.is_out_of_screen():
+            if self.is_inside == True:
+                if self.angle != 0 and self.angle != 180:
+                    self.pos_x = width - self.pos_x
+                if self.angle != 90 and self.angle != 270:
+                    self.pos_y = height - self.pos_y
+                self.is_inside = False
+        else:
+            self.is_inside = True
 
     def is_out_of_screen(self):
         bound_x = 1000
