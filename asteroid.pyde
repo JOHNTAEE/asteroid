@@ -81,8 +81,8 @@ def keyPressed():
             spaceship.increase_speed(-SPEED_DELTA)
     elif keyCode == DOWN:
         spaceship.increase_speed(SPEED_DELTA)
-        if spaceship.speed > SPEED_LIMIT/2:
-            spaceship.speed = SPEED_LIMIT/2
+        if spaceship.speed > 0:
+            spaceship.speed = 0
     elif keyCode == LEFT:
         spaceship.angle -= ANGLE_DELTA
     elif keyCode == RIGHT:
